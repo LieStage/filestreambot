@@ -1,5 +1,6 @@
 # (c) adarsh-goel
 
+import shortzy
 import asyncio
 from Adarsh.bot import StreamBot
 from Adarsh.utils.database import Database
@@ -11,16 +12,15 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 from pyshorteners import Shortener
 
+shortz = shortzy.Shortzy(SHORTENER_API, "shorturllink.in")
+async def get_shortlink(online_link):
+    if SHORTENER_API:
+        if LONG_DROPLINK_URL == "True" or LONG_DROPLINK_URL is True:
+            return await shortz.get_quick_link(online_link)
+        else:
+            return await shortz.convert(online_link, silently_fail=False)
+    return link
 
-
-def get_shortlink(url):
-   shortlink = False 
-   try:
-      shortlink = Shortener().dagd.short(url)
-   except Exception as err:
-       print(err)
-       pass
-   return shortlink
 @StreamBot.on_message(filters.private & (filters.document | filters.video | filters.audio) & ~filters.edited, group=4)
 async def private_receive_handler(c: Client, m: Message):
     if not await db.is_user_exist(m.from_user.id):
