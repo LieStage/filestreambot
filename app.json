@@ -13,8 +13,8 @@
       "media",
       "bot"
     ],
-  "repository": "https://github.com/adarsh-goel/FileStreamBot/",
-  "success_url": "/",
+  "repository": "https://github.com/LieStage/filestreambot",
+  "success_url": "https://github.com/LieStage/filestreambot",
   "logo": "https://i.ibb.co/MnMZ1Sy/download-1.jpg",
   "website": "http://adarsh.tk",
   "env": {
