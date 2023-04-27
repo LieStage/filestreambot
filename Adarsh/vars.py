@@ -31,3 +31,5 @@ class Var(object):
     DATABASE_URL = str(getenv('DATABASE_URL'))
     UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', None))
     BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1001362659779")).split()))
+    SHORTENER_API = str(getenv('SHORTENER_API','c1c6e39e62ec0186c6be3b72c3cddc272177966a'))
+    LONG_DROPLINK_URL = str(getenv('LONG_DROPLINK_URL','https://shorturllink.in/api'))
