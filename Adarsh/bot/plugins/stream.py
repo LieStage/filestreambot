@@ -12,10 +12,10 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 from pyshorteners import Shortener
 
-shortz = shortzy.Shortzy(SHORTENER_API, "dtglinks.in")
+shortz = shortzy.Shortzy(Var.SHORTENER_API, "dtglinks.in")
 async def get_shortlink(online_link):
-    if SHORTENER_API:
-        if LONG_DROPLINK_URL == "True" or LONG_DROPLINK_URL is True:
+    if Var.SHORTENER_API:
+        if Var.LONG_DROPLINK_URL == "True" or Var.LONG_DROPLINK_URL is True:
             return await shortz.get_quick_link(online_link)
         else:
             return await shortz.convert(online_link, silently_fail=False)
