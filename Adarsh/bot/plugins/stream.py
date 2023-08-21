@@ -2,6 +2,7 @@
 
 import shortzy
 import asyncio
+from asyncio import TimeoutError
 from Adarsh.bot import StreamBot
 from Adarsh.utils.database import Database
 from Adarsh.utils.human_readable import humanbytes
@@ -16,7 +17,7 @@ shortz = shortzy.Shortzy(Var.SHORTENER_API, "dtglinks.in")
 async def get_shortlink(online_link):
     if Var.SHORTENER_API:
         if Var.LONG_DROPLINK_URL == "True" or Var.LONG_DROPLINK_URL is True:
-            return  shortz.get_quick_link(online_link)
+            return shortz.get_quick_link(online_link)
         else:
             return shortz.convert(online_link, silently_fail=False)
     return link
